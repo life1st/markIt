@@ -10,8 +10,24 @@
 
 2. delete
 
-删除名为 :name 的项目
+删除名为 :name 的列表
 
 ```
   url: '/markit/:name'
+```
+
+3. get
+
+获取名为 :name 的列表
+
+```
+  url: '/markit/:name',
+  method: get
+```
+
+获取所有列表
+
+```
+  url: '/markit'
+  method: get
 ```
