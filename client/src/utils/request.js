@@ -17,3 +17,9 @@ export function updateBoard(name) {
 
   return axios.post(url)
 }
+
+export function deleteBoard(name) {
+  const url = `${BASE}/${name}`
+
+  return axios.delete(url)
+}

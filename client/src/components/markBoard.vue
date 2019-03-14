@@ -1,7 +1,8 @@
 <template>
   <div class="mark-board">
+    <i class="icon-delete" @click="handleDelete">❌</i>
     <h2>{{name}} ({{count}})</h2>
-    <button @click="handleClick">Mark it!</button>
+    <button @click="handleMark">Mark it!</button>
     <div class="content">
       <p v-for="time in times" :key="time">{{time}}</p>
     </div>
@@ -25,8 +26,11 @@
       }
     },
     methods: {
-      handleClick() {
+      handleMark() {
         this.$emit('mark', this.name)
+      },
+      handleDelete() {
+        this.$emit('delete', this.name)
       }
     }
   }
@@ -39,5 +43,8 @@
       height: 200px;
       overflow: auto;
     }
+  }
+  .icon-delete {
+    float: right;
   }
 </style>

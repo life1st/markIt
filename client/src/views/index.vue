@@ -1,16 +1,6 @@
 <template>
   <div class="main-page">
     <p>hello</p>
-    <div class="board-wrap">
-      <markBoard 
-        class="board-item"
-        v-for="(times, name) in boards" 
-        @mark="handleMarked"
-        :times="times" 
-        :name="name" 
-        :key="name"/>
-    </div>
-
     <div class="add-board">
       <input type="text" 
         v-model="newBoardName">
@@ -19,12 +9,22 @@
         添加
       </button>
     </div>
+    <div class="board-wrap">
+      <markBoard 
+        class="board-item"
+        v-for="(times, name) in boards" 
+        @mark="handleMarked"
+        @delete="handleDelete"
+        :times="times" 
+        :name="name" 
+        :key="name"/>
+    </div>
   </div>
 </template>
 <script>
   import Vue from 'vue'
   import markBoard from '../components/markBoard'
-  import { updateBoard, getMarkList } from '../utils/request'
+  import { updateBoard, getMarkList, deleteBoard } from '../utils/request'
   export default {
     components: {
       markBoard
@@ -62,6 +62,16 @@
             Vue.set(this.boards, data.name, data.times)
           }
         })
+      },
+      handleDelete(name) {
+        const bool = confirm('sure to delete this board?')
+        if (bool) {
+          deleteBoard(name).then(({status, data}) => {
+            if (status === 200) {
+              Vue.delete(this.boards, name)
+            }
+          })
+        }
       }
     }
   }
