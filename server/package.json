@@ -1,0 +1,16 @@
+{
+  "name": "mark-it",
+  "version": "1.0.0",
+  "description": "time marker",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node app.js"
+  },
+  "author": "life1st",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-joi-router": "^5.3.0",
+    "mongoose": "^5.4.19"
+  }
+}
