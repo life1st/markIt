@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE = 'http://localhost:3000/markit'
+const BASE = 'http://localhost:3000/api/markit'
 
 export function GET(url) {
   return axios.get(url)

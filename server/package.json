@@ -12,6 +12,7 @@
     "@koa/cors": "^2.2.3",
     "koa": "^2.7.0",
     "koa-joi-router": "^5.3.0",
+    "koa-static": "^5.0.0",
     "mongoose": "^5.4.19"
   }
 }

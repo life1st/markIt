@@ -4,6 +4,8 @@ const {db, listModel} = require('../db/index')
 
 const public = router()
 
+public.prefix('/api')
+
 public.post('/markit/:name', async ctx => {
   const name = ctx.captures[0]
   await listModel.findOne({name}, null, (err, list) => {
