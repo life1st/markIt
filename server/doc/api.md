@@ -31,3 +31,12 @@
   url: '/markit'
   method: get
 ```
+
+4. connect db
+
+连数据库（为了不保存密码
+
+```
+  url: '/db/connect/:pwd'
+  method: post
+```

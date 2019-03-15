@@ -1,7 +1,7 @@
 const path = require('path')
 
 const koa = require('koa')
-const router = require('./src/router')
+const {public, data} = require('./src/router')
 const cors = require('@koa/cors')
 const corsConfig = require('./src/utils/cors')
 const static = require('koa-static')
@@ -11,8 +11,9 @@ const app = new koa()
 
 app
 .use(static(CLIENT_PATH))
-// .use(cors(corsConfig))
-.use(router.middleware())
+.use(cors(corsConfig))
+.use(public.middleware())
+.use(data.middleware())
 .listen(3000, () => {
   console.log('server started@3000')
 })

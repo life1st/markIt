@@ -1,5 +1,6 @@
 <template>
   <div class="main-page">
+    <connectDB />
     <p>hello</p>
     <div class="add-board">
       <input type="text" 
@@ -24,10 +25,12 @@
 <script>
   import Vue from 'vue'
   import markBoard from '../components/markBoard'
+  import connectDB from '../components/connectDB'
+
   import { updateBoard, getMarkList, deleteBoard } from '../utils/request'
   export default {
     components: {
-      markBoard
+      markBoard, connectDB
     },
     data() {
       return {

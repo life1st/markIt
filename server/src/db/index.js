@@ -1,8 +1,11 @@
 const mongoose = require('mongoose')
 const markListSchema = require('./schema')
 
-const HOST = 'mongodb://127.0.0.1'
-mongoose.connect(`${HOST}/markit`)
+const host = (password) => (`mongodb+srv://jiaoyang:${password}@markit-kyrqp.mongodb.net/test?retryWrites=true`)
+
+const connect = (pwd) => {
+  mongoose.connect(`${host(pwd)}/markit`)
+}
 
 const db = mongoose.connection
 db.on('error', err => console.log(err, 'mongo erred.'))
@@ -13,5 +16,5 @@ db.once('open', callback => {
 const listModel = db.model('markList', markListSchema)
 
 module.exports = {
-  db, listModel
+  db, listModel, connect
 }

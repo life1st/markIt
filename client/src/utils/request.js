@@ -23,3 +23,9 @@ export function deleteBoard(name) {
 
   return axios.delete(url)
 }
+
+export function connectDB(pwd) {
+  const url = `http://localhost:3000/api/db/connect/${pwd}`
+
+  return axios.post(url)
+}

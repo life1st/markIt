@@ -1,6 +1,6 @@
 const router = require('koa-joi-router')
 const Joi = router.Joi
-const {db, listModel} = require('../db/index')
+const {db, listModel, connect} = require('../db/index')
 
 const public = router()
 
@@ -51,4 +51,14 @@ public.post('/markit/:name', async ctx => {
   })
 })
 
-module.exports = public
+const data = router()
+
+data.prefix('/api/db')
+.post('/connect/:pwd', async ctx => {
+  const pwd = ctx.captures[0]
+  connect(pwd)
+
+  ctx.body = {status: 'ok'}
+})
+
+module.exports = {public, data}
