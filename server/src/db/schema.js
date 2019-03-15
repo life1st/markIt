@@ -5,10 +5,15 @@ const list = new mongoose.Schema({
 })
 
 list.methods.add = function () {
+  this.status.connectingCount++
+
   const timeStamp = new Date().getTime()
   this.times.push(timeStamp)
-
-  this.save()
+  this.save((err) => {
+    if (!err) {
+      this.status.connectingCount--
+    }
+  })
 }
 
 module.exports = list

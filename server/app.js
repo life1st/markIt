@@ -17,5 +17,5 @@ app
 .use(public.middleware())
 .use(data.middleware())
 .listen(PORT, () => {
-  console.log(`server started${PORT}`)
+  console.log(`server started@${PORT}`)
 })
