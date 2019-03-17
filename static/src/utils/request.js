@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// const BASE = 'https://mark-it-gogemlucbr.now.sh/api'
+// const BASE = 'https://marktool.now.sh/api'
 const BASE = '/api'
 const PRE_FIX = `${BASE}/markit`
 

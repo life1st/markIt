@@ -4,7 +4,7 @@
     <h2>{{name}} ({{count}})</h2>
     <button @click="handleMark">Mark it!</button>
     <div class="content">
-      <p v-for="time in times" :key="time">{{time}}</p>
+      <p v-for="time in times" :key="time">{{time | parseTime}}</p>
     </div>
   </div>
 </template>
@@ -23,6 +23,21 @@
     computed: {
       count() {
         return this.times.length
+      }
+    },
+    filters: {
+      parseTime(val) {
+        const time = new Date(val)
+
+        const preFix0 = (num) => num < 10 ? '0' + num : num
+
+        const M = time.getMonth()
+        const D = time.getDate()
+        const hh = preFix0(time.getHours())
+        const mm = preFix0(time.getMinutes())
+        const ss = preFix0(time.getSeconds())
+
+        return `${M}/${D} - ${hh}:${mm}:${ss}`
       }
     },
     methods: {
