@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const BASE = 'https://mark-it-gogemlucbr.now.sh/api'
+// const BASE = 'https://mark-it-gogemlucbr.now.sh/api'
+const BASE = 'http://localhost/api'
 const PRE_FIX = `${BASE}/markit`
 
 export function GET(url) {

@@ -9,24 +9,11 @@ const connect = (pwd) => {
 
 const db = mongoose.connection
 
-db.status = {
-  isConnected: false,
-  connectingCount: 0
-}
-db.on('error', err => console.log(err, 'mongo erred.'))
-db.once('open', callback => {
-  db.isConnected = true
+db.on('error', err => {
+  console.log(err, 'mongo erred.')
+}).once('open', callback => {
   console.log('mongo connected.')
 })
-
-setInterval(() => {
-  if (db.status.isConnected && db.status.connectingCount <= 0) {
-    db.status.isConnected = false
-    db.status.connectingCount = 0
-
-    db.disconnect()
-  }
-}, 1000 * 60 * 60);
 
 const listModel = db.model('markList', markListSchema)
 

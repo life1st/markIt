@@ -6,14 +6,16 @@ const cors = require('@koa/cors')
 const corsConfig = require('./src/utils/cors')
 const static = require('koa-static')
 
-const CLIENT_PATH = path.resolve(__dirname + '/../client/dist')
+const CLIENT_PATH = path.resolve(__dirname + '/static/dist')
 const PORT  = 80
 
 const app = new koa()
 
+console.log(corsConfig)
+
 app
-// .use(static(CLIENT_PATH))
-.use(cors(corsConfig))
+.use(static(CLIENT_PATH))
+.use(cors())
 .use(public.middleware())
 .use(data.middleware())
 .listen(PORT, () => {
