@@ -4,8 +4,8 @@
   "description": "time marker",
   "main": "app.js",
   "scripts": {
-    "dev": "node app.js",
-    "start": "node app.js"
+    "dev": "NODE_ENV=dev node app.js",
+    "start": "NODE_ENV=product node app.js"
   },
   "author": "life1st",
   "license": "MIT",

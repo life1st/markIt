@@ -7,8 +7,9 @@ const connect = (pwd) => {
   mongoose.connect(`${host(pwd)}/markit`)
 }
 
-const db = mongoose.connection
+process.env.NODE_ENV === 'dev' && connect(require('../../.env.dev').mongo_pwd)
 
+const db = mongoose.connection
 db.on('error', err => {
   console.log(err, 'mongo erred.')
 }).once('open', callback => {

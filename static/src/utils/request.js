@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { isDev } from './utils'
 
 // const BASE = 'https://marktool.now.sh/api'
-const BASE = '/api'
+const BASE = isDev ? 'http://localhost/api' : '/api'
 const PRE_FIX = `${BASE}/markit`
 
 export function GET(url) {
