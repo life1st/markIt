@@ -53,8 +53,8 @@ public.post('/markit/:name', async ctx => {
 
 const data = router()
 
-data.prefix('/api/db')
-.post('/connect/:pwd', async ctx => {
+data.prefix('/api')
+.post('/db/connect/:pwd', async ctx => {
   const pwd = ctx.captures[0]
   connect(pwd)
 

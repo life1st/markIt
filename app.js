@@ -21,3 +21,7 @@ app
 .listen(PORT, () => {
   console.log(`server started@${PORT}`)
 })
+
+module.exports = {
+  CLIENT_PATH
+}
