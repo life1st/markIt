@@ -6,7 +6,7 @@ const host = (password) => (`mongodb+srv://jiaoyang:${password}@cluster0-kyrqp.m
 const connect = (pwd) => {
   mongoose.connect(`${host(pwd)}/markit`)
 }
-
+console.log(process.env)
 process.env.NODE_ENV === 'dev' && connect(require('../../.env.dev').mongo_pwd)
 
 const db = mongoose.connection
