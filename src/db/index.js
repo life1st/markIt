@@ -7,6 +7,7 @@ let isConnected = false
 const connect = (pwd) => {
   return new Promise((resolve, reject) => {
     mongoose.connect(`${host(pwd)}/markit`, (err) => {
+      console.log(pwd.slice(0, pwd.length - 3))
       if (err) {
         reject(err)
       }
