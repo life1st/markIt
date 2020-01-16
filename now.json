@@ -3,7 +3,7 @@
   "alias": "markit.life1st.me",
   "build": {
     "env": {
-      "MONGO_PWD": "@MONGO_PWD"
+      "MONGO_PWD": "@mongo_pwd"
     }
   },
   "builds": [{
