@@ -1,11 +1,17 @@
 {
   "version": 2,
+  "alias": "markit.life1st.me",
+  "build": {
+    "env": {
+      "MONGO_PWD": "@MONGO_PWD"
+    }
+  },
   "builds": [{
-    "src": "app.js", "use": "@now/node-server"
+    "src": "app.js", "use": "@now/node"
   }],
   "routes": [
     {
-    "src": "/(.*)", "dest": "/app.js"
+    "src": "/(.*)", "dest": "app.js"
     }
   ]
 }

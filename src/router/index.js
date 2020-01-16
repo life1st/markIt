@@ -56,9 +56,15 @@ const data = router()
 data.prefix('/api')
 .post('/db/connect/:pwd', async ctx => {
   const pwd = ctx.captures[0]
-  connect(pwd)
-
-  ctx.body = {status: 'ok'}
+  try {
+    await connect(pwd)
+    
+    ctx.body = {status: 'ok'}
+  } catch (e) {
+    ctx.status = 500
+    ctx.body = {status: false}
+  }
+  
 })
 
 module.exports = {public, data}

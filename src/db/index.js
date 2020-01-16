@@ -3,11 +3,23 @@ const markListSchema = require('./schema')
 
 const host = (password) => (`mongodb+srv://jiaoyang:${password}@cluster0-kyrqp.mongodb.net/test?retryWrites=true`)
 
+let isConnected = false
 const connect = (pwd) => {
-  mongoose.connect(`${host(pwd)}/markit`)
+  return new Promise((resolve, reject) => {
+    mongoose.connect(`${host(pwd)}/markit`, (err) => {
+      if (err) {
+        reject(err)
+      }
+      isConnected = true
+      resolve()
+    })
+  })
 }
 
-// process.env.NODE_ENV === 'dev' && connect(require('../../.env.dev').mongo_pwd)
+if (process.env.MONGO_PWD && !isConnected) {
+  console.log('connect db')
+  connect(process.env.MONGO_PWD)
+}
 
 const db = mongoose.connection
 db.on('error', err => {
