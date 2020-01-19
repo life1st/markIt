@@ -3,12 +3,9 @@ const {public, data} = require('./src/router')
 const { dev } = require('./src/router/dev')
 const cors = require('@koa/cors')
 const corsConfig = require('./src/utils/cors')
-const errHandler = require('./src/utils/errHandler')
+const errHandler = require('./src/middleware/errHandler')
 const static = require('koa-static')
 const {CLIENT_PATH} = require('./src/utils/verb')
-const {connect} = require('./src/db/index')
-
-const PORT  = 80
 
 const app = new koa()
 
@@ -19,6 +16,5 @@ app
 .use(data.middleware())
 .use(dev.middleware())
 .use(static(CLIENT_PATH))
-.listen(PORT, () => {
-  console.log(`server started@${PORT}`)
-})
+
+module.exports = app.callback()
