@@ -2,7 +2,9 @@
   "version": 2,
   "alias": "markit.life1st.me",
   "env": {
-    "MONGO_PWD": "@mongo_pwd"
+    "MONGO_PWD": "@mongo_pwd",
+    "TIMBER_ID": "@timber_markit_id",
+    "TIMBER_APIKEY": "@timber_markit_apikey"
   },
   "builds": [{
     "src": "app.js", "use": "@now/node"

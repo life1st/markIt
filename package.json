@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "@koa/cors": "^2.2.3",
+    "@timberio/node": "^0.35.0",
     "koa": "^2.7.0",
     "koa-joi-router": "^5.3.0",
     "koa-static": "^5.0.0",
