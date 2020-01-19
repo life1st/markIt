@@ -1,5 +1,6 @@
 const koa = require('koa')
 const {public, data} = require('./src/router')
+const { dev } = require('./src/router/dev')
 const cors = require('@koa/cors')
 const corsConfig = require('./src/utils/cors')
 const errHandler = require('./src/utils/errHandler')
@@ -16,6 +17,7 @@ app
 .use(cors(corsConfig))
 .use(public.middleware())
 .use(data.middleware())
+.use(dev.middleware())
 .use(static(CLIENT_PATH))
 .listen(PORT, () => {
   console.log(`server started@${PORT}`)

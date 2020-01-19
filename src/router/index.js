@@ -64,7 +64,6 @@ data.prefix('/api')
     ctx.status = 500
     ctx.body = {status: false}
   }
-  
 })
 
 module.exports = {public, data}
