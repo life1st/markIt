@@ -5,8 +5,7 @@ const {db, listModel, connect} = require('../db/index')
 const public = router()
 
 public.prefix('/api')
-
-public.post('/markit/:name', async ctx => {
+.post('/markit/:name', async ctx => {
   const name = ctx.captures[0]
   await listModel.findOne({name}, null, (err, list) => {
 
@@ -22,22 +21,28 @@ public.post('/markit/:name', async ctx => {
       ctx.body = listEntity
     }
   })
-}).delete('/markit/:name', async ctx => {
+})
+.delete('/markit/:name', async ctx => {
   const name = ctx.captures[0]
 
   await listModel.deleteOne({name}, err => {
-    if (err) ctx.body = {status: 'error'}
-
-    ctx.body = {status: 'ok'}
+    if (err) {
+      ctx.status = 403
+      ctx.body = {status: 'error'}
+    } else {
+      ctx.body = {status: 'ok'}
+    }
   })
-}).get('/markit', async ctx => {
+})
+.get('/markit', async ctx => {
   const res = await listModel.find()
 
   ctx.body = res.map(item => ({
     name: item.name,
     times: item.times
   }))
-}).get('/markit/:name', async ctx => {
+})
+.get('/markit/:name', async ctx => {
   const name = ctx.captures[0]
 
   await listModel.findOne({name}, null, (err, list) => {
@@ -46,6 +51,7 @@ public.post('/markit/:name', async ctx => {
     if (list) {
       ctx.body = {name: list.name, times: list.times}
     } else {
+      ctx.status = 404
       ctx.body = 'not found'
     }
   })
